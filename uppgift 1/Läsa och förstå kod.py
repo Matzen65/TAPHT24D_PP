@@ -1,7 +1,7 @@
 # 1.Läsa och förstå kod - diskutera i grupp
 # Skriv ner vad du tror kommer skrivas ut.
 # Skriv sedan in koden i din IDE, exakt som den står, och kör den.
-# Fick du samma resultat som du trodde? Om inte, varför?
+# Fick du samma resultat som du trodde? Om inte, varför
 
 
 print("------------------")
