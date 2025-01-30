@@ -70,26 +70,26 @@ elif version == 3:
 
 
 
-    player1_sum = 0
-    player1_in_game = True
+    player_sum = 0
+    player_game = True
     computer_sum = 0
-    computer_in_game = True
+    computer_game = True
     spelare = input(" Ange ditt namn tack: ")
     print()
 
     i = 0
-    while (player1_in_game or Dealer_in_game): #and (player1_sum <= 21 or computer_sum <= 21):
+    while (player_game or Dealer_game): #and (player1_sum <= 21 or computer_sum <= 21):
         i += 1 # räknare för antal spelomgångar
         print()
         print()
         print(f" ############## GIV: {i} ##############")
         print()
         # Datorn drar första kortet
-        Dealer_in_game = True
-        player1_in_game = True
+        Dealer_game = True
+        player_game = True
 
         # Dealer (dator)
-        if Dealer_in_game:
+        if Dealer_game:
             print(" **** Dealer ****")
             # Dealer beslutar om att fortsätta eller att stanna
             print(f" Dealerns summa är: {computer_sum}")
@@ -103,7 +103,7 @@ elif version == 3:
                     print(f" Dealer är tjock med summan {computer_sum} ")
                     print()
                     time.sleep(1)
-                    print(f' {spelare}  summa är {player1_sum}')
+                    print(f' {spelare}  summa är {player_sum}')
                     time.sleep(1)
                     print(f'******* {spelare}  har vunnit *******')
                     print()
@@ -113,22 +113,22 @@ elif version == 3:
                 print()
             elif computer_sum == 21:
                 print(" Dealern har 21 och väljer att stanna!")
-                Dealer_in_game = False
+                Dealer_game = False
             #else:
 
 
-        if player1_in_game:
+        if player_game:
             print(f'**** {spelare} ****')
-            print(f" {spelare} summa är: {player1_sum}")
+            print(f" {spelare} summa är: {player_sum}")
             answer = input(" Vill du dra nytt kort? [Ja/Nej]: ")
             if answer.casefold() == "ja" or answer.casefold() == "j":
-                player1_card = draw(player1_sum)
-                player1_sum += player1_card
-                print(f" {spelare} drar nytt kort och vänder upp valören: {player1_card}")
+                player_card = draw(player_sum)
+                player_sum += player_card
+                print(f" {spelare} drar nytt kort och vänder upp valören: {player_card}")
                 time.sleep(3)
-                if player1_sum > 21:
+                if player_sum > 21:
                     print()
-                    print(f' Kortets valör är "{player1_card}", summan är "{player1_sum}" du är tjock och har förlorat')
+                    print(f' Kortets valör är "{player_card}", summan är "{player_sum}" du är tjock och har förlorat')
                     time.sleep(1)
                     print(f" Dealerns summa är: {computer_sum}, dealern har vunnit")
                     print()
@@ -138,12 +138,13 @@ elif version == 3:
                     break
             elif answer.casefold() == "nej" or answer.casefold() == "n":
                 print()
-                print(f" {spelare} väljer att stanna vid summan!: {player1_sum}")
-                print(f" Dealerns summa är: {computer_sum}, dealern har vunnit")
+                print(f" {spelare} väljer att stanna vid summan!: {player_sum}")
+
+                #print(f" Dealerns summa är: {computer_sum}, dealern har vunnit")
+                #print()
+                #print("******* Game Over *******")
                 print()
-                print("******* Game Over *******")
-                print()
-                break
+                player_game = False
 
 
 
