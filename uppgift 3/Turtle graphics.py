@@ -175,9 +175,23 @@ def bokstav_Y(a,b,c,d):
     t.up()
     t.home()
 
+def bokstav_T(a,b,c):
+    t.home()
+    t.fd(160)
+    t.down()
+    t.left(a)
+    t.fd(106)
+    t.left(90)
+    t.fd(40)
+    t.right(180)
+    t.fd(80)
+    t.up()
+    t.home()
+
+
 def bokstav_H(a,b,c,d):
-    #t.home()
-    t.fd(b*1.2)
+    t.home()
+    t.fd(230)
     t.down()
     t.left(a)
     t.fd(b)
@@ -185,10 +199,11 @@ def bokstav_H(a,b,c,d):
     t.fd(-b/2)
     t.right(a)
     t.fd(b/2)
-    t.left(90)
+    t.left(a)
     t.fd(b/2)
     t.right(180)
     t.fd(b)
+    t.up()
     t.home()
 
 
@@ -200,6 +215,7 @@ def bokstav_H(a,b,c,d):
 
 bokstav_P(90,100,24)
 bokstav_Y(90,60,45,45)
+bokstav_T(90,60,90)
 bokstav_H(90,106,0,0)
 t.mainloop()
 
