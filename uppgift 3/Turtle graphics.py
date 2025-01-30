@@ -31,7 +31,8 @@ t.mainloop()
 
 1 Skriv en funktion som ritar en kvadrat. Längden på sidan ska vara en parameter till funktionen.
 
-2 Skriv en funktion som flyttar pennan ett lämpligt avstånd till höger, utan att rita. Tanken är att du ska kunna kombinera den med kvadratfunktionen, för att rita flera kvadrater. Exempel:
+2 Skriv en funktion som flyttar pennan ett lämpligt avstånd till höger, utan att rita.
+Tanken är att du ska kunna kombinera den med kvadratfunktionen, för att rita flera kvadrater. Exempel:
 for x in range(5):
     t.square()
     t.move_next()
@@ -43,8 +44,8 @@ for x in range(7):
     t.forward(40)
     t.right(30)
 
-4 Skriv funktioner som ritar de enskilda bokstäverna i ordet "PYTHON" med turtle-modulen. Kombinera dem och försök få bokstäverna att ritas med samma storlek, på en rak linje.
-
+4 Skriv funktioner som ritar de enskilda bokstäverna i ordet "PYTHON" med turtle-modulen.
+Kombinera dem och försök få bokstäverna att ritas med samma storlek, på en rak linje.
 
 Bonusuppgift, lär dig rekursiva funktioner med turtle graphics:
 Python Turtle Meets Fractal Art: A Recursive Journey
@@ -61,6 +62,7 @@ import turtle as t
 # pendown kommer sedan att börja rita från kvadratens övre vänstra hörn
 # funktionen avslutar med att återgå till startpunkten och riktad rakt åt höger.
 
+"""
 def square1(x,y,sides, angle):
     t.penup()
     t.home()
@@ -137,3 +139,69 @@ circle(full_c,5,grader)
 
 # Låt fönstret stanna kvar tills användaren stänger det
 t.mainloop()
+
+# _______________________ Uppgift 4 _______________________
+#Skriv funktioner som ritar de enskilda bokstäverna i ordet "PYTHON" med turtle-modulen. 
+#Kombinera dem och försök få bokstäverna att ritas med samma storlek, på en rak linje.
+"""
+def bokstav_P(a,b,c):
+    t.home()
+    t.left(a)
+    t.fd(b*1.05)
+    t.right(65)
+    for x in range(c):
+        t.fd(4)
+        t.right(10)
+    t.up()
+    t.home()
+    #t.mode()
+
+def bokstav_Y(a,b,c,d):
+    #t.home()
+    print("start Y",t.pos())
+    t.fd(b*1.2)
+    t.down()
+    t.left(a)
+    t.fd(b*1.2)
+    t.right(d)
+    print(t.pos())
+    t.fd(b*0.8)
+    print("överst i Y",t.pos())
+    t.goto(72,72)
+    print(t.pos())
+    t.down()
+    t.left(d*2)
+    t.fd(b*0.8)
+    t.up()
+    t.home()
+
+def bokstav_H(a,b,c,d):
+    #t.home()
+    t.fd(b*1.2)
+    t.down()
+    t.left(a)
+    t.fd(b)
+    #t.up()
+    t.fd(-b/2)
+    t.right(a)
+    t.fd(b/2)
+    t.left(90)
+    t.fd(b/2)
+    t.right(180)
+    t.fd(b)
+    t.home()
+
+
+
+    #t.home()
+
+
+
+
+bokstav_P(90,100,24)
+bokstav_Y(90,60,45,45)
+bokstav_H(90,106,0,0)
+t.mainloop()
+
+
+
