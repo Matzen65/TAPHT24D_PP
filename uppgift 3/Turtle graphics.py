@@ -56,12 +56,25 @@ import turtle as t
 # 1 Skriv en funktion som ritar en kvadrat.
 # Längden på sidan ska vara en parameter till funktionen.
 
-def square(sides, angle=90):
+# funktion som ritar en kvadrat.
+# Man anger centrumpunkten och hur den ska luta samt sidornas längd
+# pendown kommer sedan att börja rita från kvadratens övre vänstra hörn
+# funktionen avslutar med att återgå till startpunkten och riktad rakt åt höger.
+
+def square1(x,y,sides, angle):
+    t.penup()
+    t.home()
+    t.forward(-sides/2)
+    t.left(90)
+    t.forward(sides/2)
     t.pendown()
-    for x in range(4):
-        t.left(angle)
+    for i in range(4):
+        t.right(angle)
         t.forward(sides)
-#square(50)
+    t.penup()
+    t.home()
+
+square1(0,0,100, 90)
 
 # _______________________ Uppgift 2 _______________________
 # Skriv en funktion som flyttar pennan ett lämpligt avstånd till höger, utan att rita.
@@ -70,54 +83,57 @@ def square(sides, angle=90):
 # for x in range(5):
 #     t.square()
 #     t.move_next()
-"""
-def move_horizontal(length):
-        t.penup()
-        t.forward(length)
 
-move_horizontal(-300)
-for x in range(4):
-    move_horizontal(100)
-    square(50)
+def square2(x, y, side, tilt):
+    # t.pos = kvadrats centrumpunkt är (x,y)
+    t.up()
+    t.goto(x,y)  # söker upp önskad centrumpunkt (x,y):
+    #print("startpunkt ", t.pos())
+    t.right(tilt)  # vrider markören i tiltat läge medurs
+    #söker upp kvadratens övre vänstra hörn
+    t.fd(-side/2)
+    t.left(90)
+    t.fd(side/2)
+    t.right(90)
+    t.down()
+    #print("sätter ner pennan på: ",t.pos())
+    for i in range(4):
+        t.forward(side)
+        t.right(90)
+    t.up()
+    t.left(tilt)
+    t.home()
+    #t.goto(x,y) # återgår till startpunkten (x,y):
+    #print("slutpunkt ",t.pos()) #återgår till startpunkten:
 
-for x in range(10):
-    t.forward(40)
-    t.right(40)
-"""
+t.home()
+square2(-100,100, 50, 45)
+square2(100,100,50, 45)
+square2(-100,-100,50, 45)
+square2(100,-100,50, 45)
+
+
+
 # _______________________ Uppgift 3 _______________________
 #Bygg om koden så att den ingår i en funktion, som ritar en komplett cirkel.
 # Använd parametrar i stället för värdena 7, 40 och 30.
 
-def square(sides, angle=90):
-    t.pendown()
-    for x in range(4):
-        t.left(angle)
-        t.forward(sides)
-
-def move(length):
-    t.penup()
-    t.forward(length)
-    t.pendown()
-
-move(-150)
-
-for x in range(2):
-    move(150)
-    square(50)
-
-move(-50)
-t.left(90)
-move(-50)
-t.pendown()
 # Full cirkel 360 grader, om right är 10 vrider sig pennan 10 grader varje gång.
 # alltså krävs det 36 iterationer för en full cirkel.
 
 t.home()
+def circle(i, f, ri):
+    t.down()
+    for x in range(i):
+        t.fd(f)
+        t.right(ri)
 
-for x in range(90):
-    t.forward(5)
-    t.right(4)
+#print("ritar en cirkel")
+
+grader = 10
+full_c = int(360/grader)
+t.goto(-4,27)
+circle(full_c,5,grader)
 
 # Låt fönstret stanna kvar tills användaren stänger det
 t.mainloop()
-
