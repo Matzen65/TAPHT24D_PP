@@ -1,3 +1,3 @@
 
-def eko(sträng, count = 3):
+def eko(sträng, count=2):
     print(sträng * count)
