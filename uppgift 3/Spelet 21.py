@@ -17,7 +17,7 @@ import time
 import random
 
 print()
-version = int(input("ange vilken version som önskas av 1-3: "))
+version = int(input("ange vilken version som önskas av 1, 2 eller 3 för bonusversionen: "))
 print()
 
 #--------------------------Version 1--------------------------
@@ -63,20 +63,17 @@ elif version == 3:
         sum += card
         return card
 
-    #print(f' {spelare}  summa är "{player_sum}"')
-
     player_sum = 0
     player_game = True
     computer_sum = 0        #Dealers summa
     dealer_game = True
-    limit = 17
+    limit = 12
     i = 0
     spelare = input("Ange ditt namn tack: ")
     print("Gräns för när Dealern väljer att stanna är satt vid 17")
     print()
 
-
-    while (player_game or dealer_game):
+    while player_game or dealer_game:
         i += 1
         print()
         print()
@@ -93,14 +90,13 @@ elif version == 3:
                 computer_sum += dealers_card
                 print(f" Dealer drar nytt kort och vänder upp valören: {dealers_card}")
                 print(f" Dealerns summa är nu {computer_sum}")
-                time.sleep(3)
+                time.sleep(1)
                 if computer_sum > 21:
                     print(f" Dealer är tjock med summan {computer_sum} ")
-                    print()
                     time.sleep(1)
                     print(f' {spelare}  summa är {player_sum}')
                     time.sleep(1)
-                    print(f'******* Dealer har vunnit *******')
+                    print(f'******* {spelare} har vunnit *******')
                     print()
                     print("******* Game Over *******")
                     print()
@@ -108,16 +104,14 @@ elif version == 3:
                 print()
             elif computer_sum >= limit:
                 print(f" Dealern har {computer_sum} och väljer att stanna!")
-                if player_game != True:
+                if player_game != True and computer_sum >= player_sum:
                     time.sleep(1)
-                    print(f'******* {spelare}  har vunnit *******')
+                    print(f'******* dealern har vunnit *******')
                     print()
                     print("******* Game Over *******")
                     break
                 else:
                     dealer_game = False
-
-
 
         if player_game:
             print(f'**** {spelare} ****')
@@ -128,7 +122,7 @@ elif version == 3:
                 player_sum += player_card
                 print(f" {spelare} drar nytt kort och vänder upp valören: {player_card}")
                 print(f" {spelare} summa är nu: {player_sum}")
-                time.sleep(3)
+                time.sleep(1)
                 if player_sum > 21:
                     print()
                     print(f' Kortets valör är "{player_card}", summan är "{player_sum}" du är tjock och har förlorat')
@@ -136,12 +130,23 @@ elif version == 3:
                     print(f" Dealerns summa är: {computer_sum}, dealern har vunnit")
                     print()
                     time.sleep(1)
-                    print("******* Game Over *******")
                     print()
+                    print("******* Game Over *******")
+                    break
 
             elif answer.casefold() == "nej" or answer.casefold() == "n":
                 print()
                 print(f" {spelare} väljer att stanna vid summan!: {player_sum}")
+                if dealer_game == False and player_sum >= computer_sum:
+                    time.sleep(1)
+                    print(f'******* {spelare}  har vunnit *******')
+                    print()
+                    print("******* Game Over *******")
+                else:
+                    time.sleep(1)
+                    print(f'******* Dealern har vunnit *******')
+                    print()
+                    print("******* Game Over *******")
                 player_game = False
 
 
