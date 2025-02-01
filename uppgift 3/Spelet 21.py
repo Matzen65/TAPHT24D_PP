@@ -67,7 +67,7 @@ elif version == 3:
     player_game = True
     computer_sum = 0        #Dealers summa
     dealer_game = True
-    limit = 12
+    limit = 17
     i = 0
     spelare = input("Ange ditt namn tack: ")
     print("Gräns för när Dealern väljer att stanna är satt vid 17")
