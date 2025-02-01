@@ -15,7 +15,6 @@ Möjlig vidareutveckling: bygg ett spel som frågar användaren om man vill ta e
 #===========================================================
 import time
 import random
-from asyncio import wait_for
 
 print()
 version = int(input("ange vilken version som önskas av 1-3: "))
@@ -64,36 +63,32 @@ elif version == 3:
         sum += card
         return card
 
-
-    #print(f' {spelare}  summa är "{player1_sum}"')
-
-
-
+    #print(f' {spelare}  summa är "{player_sum}"')
 
     player_sum = 0
     player_game = True
-    computer_sum = 0
-    computer_game = True
-    spelare = input(" Ange ditt namn tack: ")
+    computer_sum = 0        #Dealers summa
+    dealer_game = True
+    limit = 17
+    i = 0
+    spelare = input("Ange ditt namn tack: ")
+    print("Gräns för när Dealern väljer att stanna är satt vid 17")
     print()
 
-    i = 0
-    while (player_game or Dealer_game): #and (player1_sum <= 21 or computer_sum <= 21):
-        i += 1 # räknare för antal spelomgångar
+
+    while (player_game or dealer_game):
+        i += 1
         print()
         print()
         print(f" ############## GIV: {i} ##############")
         print()
         # Datorn drar första kortet
-        Dealer_game = True
-        player_game = True
 
-        # Dealer (dator)
-        if Dealer_game:
+        if dealer_game:
             print(" **** Dealer ****")
             # Dealer beslutar om att fortsätta eller att stanna
             print(f" Dealerns summa är: {computer_sum}")
-            if computer_sum < 21:
+            if computer_sum < limit:
                 dealers_card = draw(computer_sum) #Dealer drar nytt kort och visar upp det
                 computer_sum += dealers_card
                 print(f" Dealer drar nytt kort och vänder upp valören: {dealers_card}")
@@ -105,16 +100,23 @@ elif version == 3:
                     time.sleep(1)
                     print(f' {spelare}  summa är {player_sum}')
                     time.sleep(1)
-                    print(f'******* {spelare}  har vunnit *******')
+                    print(f'******* Dealer har vunnit *******')
                     print()
                     print("******* Game Over *******")
                     print()
                     break
                 print()
-            elif computer_sum == 21:
-                print(" Dealern har 21 och väljer att stanna!")
-                Dealer_game = False
-            #else:
+            elif computer_sum >= limit:
+                print(f" Dealern har {computer_sum} och väljer att stanna!")
+                if player_game != True:
+                    time.sleep(1)
+                    print(f'******* {spelare}  har vunnit *******')
+                    print()
+                    print("******* Game Over *******")
+                    break
+                else:
+                    dealer_game = False
+
 
 
         if player_game:
@@ -125,6 +127,7 @@ elif version == 3:
                 player_card = draw(player_sum)
                 player_sum += player_card
                 print(f" {spelare} drar nytt kort och vänder upp valören: {player_card}")
+                print(f" {spelare} summa är nu: {player_sum}")
                 time.sleep(3)
                 if player_sum > 21:
                     print()
@@ -135,16 +138,12 @@ elif version == 3:
                     time.sleep(1)
                     print("******* Game Over *******")
                     print()
-                    break
+
             elif answer.casefold() == "nej" or answer.casefold() == "n":
                 print()
                 print(f" {spelare} väljer att stanna vid summan!: {player_sum}")
-
-                #print(f" Dealerns summa är: {computer_sum}, dealern har vunnit")
-                #print()
-                #print("******* Game Over *******")
-                print()
                 player_game = False
+
 
 
 
