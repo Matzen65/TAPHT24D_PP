@@ -30,7 +30,8 @@ print(" 2b. ----------------------------------------------------")
 # Exempel:
 # eko("hej", 3) → skriver ut "hejhejhej"
 
-module2.eko("hej", 3)
+antal = int(input("skriv in hur många eko du önskar: " ))
+module2.eko("hej", antal)
 
 
 print(" 3. ----------------------------------------------------")
