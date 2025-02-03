@@ -67,9 +67,10 @@ if uppgift == 2:
 
 
 ###################### uppgift 3 #################################################
-# bygger en hand om 5 kort samt "undviker dublettkort"
+# bygger en hand om 5 kort samt "undviker dubblettkort"
 # vilket annars förekommer ungefär var 5e gång
 # funktionen talar sedan om man har ett par på hand.
+
 if uppgift == 3:
 
     def poker_hand(the_hand):
